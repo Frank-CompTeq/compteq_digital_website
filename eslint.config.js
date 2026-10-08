@@ -6,7 +6,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 export default [
   { ignores: ['dist', 'node_modules'] },
   {
-    files: ['**/*.{js,jsx}'],
+    files: ['**/*.{js,jsx,mjs}'],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
@@ -29,6 +29,10 @@ export default [
         { allowConstantExport: true },
       ],
     },
+  },
+  {
+    files: ['plugins/**/*.js', 'scripts/**/*.mjs', 'vite.config.js'],
+    languageOptions: { globals: globals.node },
   },
   {
     files: ['src/components/ui/**/*.{js,jsx}'],

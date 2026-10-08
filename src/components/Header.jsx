@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { NAV } from '@/lib/site'
 import { Logo } from '@/components/Logo'
@@ -9,6 +9,7 @@ export function Header() {
   const [open, setOpen] = useState(false)
   const buttonRef = useRef(null)
   const listRef = useRef(null)
+  const { pathname } = useLocation()
 
   const close = useCallback((returnFocus = false) => {
     setOpen(false)
@@ -59,7 +60,12 @@ export function Header() {
           <ul id="main-menu" ref={listRef}>
             {NAV.map((item) => (
               <li key={item.to}>
-                <Link to={item.to} className="nav-link" onClick={() => close()}>
+                <Link
+                  to={item.to}
+                  className="nav-link"
+                  aria-current={item.to === '/blog/' && pathname.startsWith('/blog') ? 'page' : undefined}
+                  onClick={() => close()}
+                >
                   {item.label}
                 </Link>
               </li>

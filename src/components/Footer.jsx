@@ -28,6 +28,7 @@ export function Footer() {
             <h2>Company</h2>
             <ul>
               <li><Link to="/#process">Process</Link></li>
+              <li><Link to="/blog/">Blog</Link></li>
               <li><Link to="/#contact">Contact</Link></li>
               <li><Link to="/privacy/">Privacy Policy</Link></li>
               <li><Link to="/legal/">Legal Notice</Link></li>
