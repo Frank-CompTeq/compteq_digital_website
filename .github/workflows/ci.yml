@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm build
+      - name: Check the pre-rendered HTML contains the content
+        run: |
+          grep -q '<h1' dist/index.html
+          grep -q 'application/ld+json' dist/index.html
+          test -f dist/privacy/index.html && test -f dist/legal/index.html
+          test -f dist/robots.txt && test -f dist/sitemap.xml
