@@ -89,7 +89,7 @@ export function loadPosts() {
   const md = createMarkdown()
   const posts = []
 
-  for (const file of fs.readdirSync(CONTENT_DIR).filter((name) => /\.mdx?$/.test(name)).sort()) {
+  for (const file of fs.readdirSync(CONTENT_DIR).filter((name) => /\.md$/.test(name) && !/^readme/i.test(name)).sort()) {
     const source = fs.readFileSync(path.join(CONTENT_DIR, file), 'utf8')
     const { data, content } = matter(source)
     if (data.draft === true) continue
@@ -98,7 +98,7 @@ export function loadPosts() {
       if (!data[field]) throw new Error(`[blog] ${file}: missing frontmatter field "${field}"`)
     }
 
-    const slug = data.slug ? slugify(data.slug) : slugify(file.replace(/\.mdx?$/, ''))
+    const slug = data.slug ? slugify(data.slug) : slugify(file.replace(/\.md$/, ''))
     const env = {}
     const html = md.render(content, env)
     const words = plainText(content).split(/\s+/).filter(Boolean).length

@@ -17,6 +17,12 @@ export default defineConfig({
     dirStyle: 'nested',
     formatting: 'minify',
     beastiesOptions: { preload: 'media', pruneSource: false, preloadFonts: false },
+    // The charset declaration must be within the first 1024 bytes; react-head prepends tags before it.
+    onPageRendered: (_route, html) => {
+      const charset = html.match(/<meta charset="[^"]*"\s*\/?>/i)?.[0]
+      if (!charset) return html
+      return html.replace(charset, '').replace('<head>', `<head>${charset}`)
+    },
     // sitemap.xml and rss.xml are generated from the pages + content/blog so new articles appear automatically.
     onFinished: (dir) => writeBlogFeeds(dir),
   },

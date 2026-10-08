@@ -1,6 +1,6 @@
 # CompTeq Digital - Apache / LiteSpeed configuration (Hostinger).
 # The site is pre-rendered at build time: every real route exists as a static
-# file (/index.html, /privacy/index.html, /legal/index.html, /404/index.html),
+# file (/index.html, /privacy/, /legal/, /404/, /blog/ and every article under /blog/<slug>/),
 # so there is NO catch-all SPA rewrite. Unknown URLs return a real HTTP 404.
 
 DirectoryIndex index.html
@@ -25,6 +25,9 @@ ErrorDocument 404 /404/index.html
   AddType font/woff2 .woff2
   AddType application/manifest+json .webmanifest
   AddType image/svg+xml .svg
+  <Files "rss.xml">
+    ForceType application/rss+xml
+  </Files>
 </IfModule>
 
 # Cache: hashed files in /assets/ never change, so they are cached for a year.

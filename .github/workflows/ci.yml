@@ -24,3 +24,6 @@ jobs:
           grep -q 'application/ld+json' dist/index.html
           test -f dist/privacy/index.html && test -f dist/legal/index.html
           test -f dist/robots.txt && test -f dist/sitemap.xml
+          test -f dist/blog/index.html && test -f dist/rss.xml
+          grep -q 'BreadcrumbList' dist/blog/custom-saas-build-vs-buy/index.html
+          grep -q '/blog/custom-saas-build-vs-buy/' dist/sitemap.xml
