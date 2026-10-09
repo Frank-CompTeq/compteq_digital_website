@@ -14,7 +14,7 @@ Marketing site for CompTeq Digital (St. Petersburg, Florida): custom SaaS develo
 pnpm install
 pnpm dev        # dev server
 pnpm lint
-pnpm build      # pre-renders to dist/ (index, privacy/, legal/, 404/)
+pnpm build      # pre-renders to dist/ (home, privacy/, legal/, 404/, blog/...) + sitemap.xml + rss.xml
 pnpm preview    # serves dist/ on http://localhost:4173
 ```
 
@@ -23,14 +23,23 @@ pnpm preview    # serves dist/ on http://localhost:4173
 ```
 src/
   main.jsx, routes.jsx     entry + route table (pre-rendered routes)
-  pages/                   Home, Privacy, Legal, NotFound
+  pages/                   Home, Privacy, Legal, NotFound, BlogIndex, BlogPost
   sections/                Hero, Services, Process, Approach, Contact
   components/              Header (accessible mobile menu), Footer, HeroVisual (SVG), ContactForm, Seo, ...
   lib/site.js              company data, nav, SEO defaults
-public/                    robots.txt, sitemap.xml, icons, OG image, .htaccess
+content/blog/              Markdown articles (see content/blog/README.md)
+plugins/blog.js            Vite plugin: Markdown -> HTML, blog data, sitemap.xml and rss.xml at build
+scripts/og-images.mjs      generates the 1200x630 PNG social cards (pnpm blog:og)
+public/                    robots.txt, icons, OG image, blog illustrations, .htaccess
 ```
 
-When adding a page: add the route in `src/routes.jsx`, a `<Seo>` block in the page, and the URL in `public/sitemap.xml`.
+`sitemap.xml` and `rss.xml` are generated at build time (static pages are listed in `src/lib/site-data.js`; blog URLs come from `content/blog`).
+
+When adding a page: add the route in `src/routes.jsx`, a `<Seo>` block in the page, and the page in `STATIC_PAGES` in `src/lib/site-data.js` (it feeds `sitemap.xml`).
+
+## Blog
+
+English blog at `/blog/` with articles written in Markdown. To add an article, see [`content/blog/README.md`](content/blog/README.md).
 
 ## Contact form
 

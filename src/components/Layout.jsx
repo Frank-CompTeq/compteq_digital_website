@@ -10,6 +10,7 @@ export function Layout() {
   return (
     <>
       <Head>
+        <link rel="alternate" type="application/rss+xml" title="CompTeq Digital Blog" href="/rss.xml" />
         <link rel="preload" href={frauncesUrl} as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href={interUrl} as="font" type="font/woff2" crossOrigin="anonymous" />
       </Head>

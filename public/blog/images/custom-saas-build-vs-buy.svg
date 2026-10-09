@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img">
+<defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#d8d0bd" stroke-width="1" opacity=".55"/></pattern></defs>
+<rect width="1200" height="630" fill="#f4efe4"/><rect width="1200" height="630" fill="url(#g)"/>
+<rect x="24" y="24" width="1152" height="582" fill="none" stroke="#c9c1ac" stroke-width="1"/>
+<g transform="translate(600 440)">
+  <path d="M-80 130H80L0 0Z" fill="#0e1b2e"/>
+  <rect x="-120" y="128" width="240" height="14" fill="#0e1b2e"/>
+  <path d="M0 -150V0" stroke="#0e1b2e" stroke-width="10"/>
+  <rect x="-380" y="-156" width="760" height="12" fill="#0e1b2e"/>
+  <circle cx="0" cy="-150" r="14" fill="#b8893b"/>
+  <g stroke="#0e1b2e" stroke-width="2"><path d="M-370 -144L-420 -32M-370 -144L-320 -32"/><path d="M370 -144L320 -32M370 -144L420 -32"/></g>
+  <g transform="translate(-370 -30)">
+    <path d="M-60 -2H60Q60 40 0 40Q-60 40 -60 -2Z" fill="#fbf9f4" stroke="#0e1b2e" stroke-width="2.5"/>
+    <g fill="#fbf9f4" stroke="#0e1b2e" stroke-width="2.5"><rect x="-52" y="-44" width="48" height="42"/><rect x="4" y="-44" width="48" height="42"/><rect x="-24" y="-86" width="48" height="42"/></g>
+    <g stroke="#c9c1ac" stroke-width="2"><path d="M-44 -30H-12M12 -30H44M-16 -72H16"/></g>
+  </g>
+  <g transform="translate(370 -30)">
+    <path d="M-60 -2H60Q60 40 0 40Q-60 40 -60 -2Z" fill="#fbf9f4" stroke="#0e1b2e" stroke-width="2.5"/>
+    <path d="M-34 -2V-70H-12Q-12 -92 10 -92Q32 -92 32 -70H34V-2Z" fill="#b8893b" stroke="#0e1b2e" stroke-width="2.5" stroke-linejoin="round" transform="translate(-4 0)"/>
+    <circle cx="6" cy="-30" r="7" fill="#fbf9f4" stroke="#0e1b2e" stroke-width="2"/>
+  </g>
+</g>
+<g fill="none" stroke="#8c6420" stroke-width="2" stroke-dasharray="3 7"><path d="M120 120H330M870 120H1080"/></g>
+</svg>
