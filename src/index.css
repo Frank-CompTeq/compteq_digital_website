@@ -446,12 +446,18 @@
     .step__dot { position: absolute; left: 0; top: 0; margin: 0; }
     .principles { grid-template-columns: 1fr; }
     .principle, .principle + .principle { padding: 26px 0; border-left: 0; border-bottom: 1px solid var(--color-rule); }
-    .contact__grid { grid-template-columns: 1fr; gap: 48px; }
+    .contact__grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
     .form-card { padding: 28px 22px; }
     .form-two { grid-template-columns: 1fr; gap: 0; }
-    .site-footer__cols { grid-template-columns: 1fr 1fr; }
+    .site-footer__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .site-footer__cols > div:first-child { grid-column: 1 / -1; }
     .doc { padding: 56px 0 80px; }
+  }
+
+  @media (max-width: 480px) {
+    .contact__list > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+    .contact__list dt { padding-top: 0; }
+    .site-footer__cols > div:last-child { grid-column: 1 / -1; }
   }
 
   @media (scripting: none) {
