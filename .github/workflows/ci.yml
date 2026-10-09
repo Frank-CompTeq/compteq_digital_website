@@ -21,6 +21,8 @@ jobs:
       - name: Check the pre-rendered HTML contains the content
         run: |
           grep -q '<h1' dist/index.html
+          grep -q 'id="cf-name"' dist/index.html
+          if grep -q 'action="mailto:' dist/index.html; then echo 'contact form still uses mailto' >&2; exit 1; fi
           grep -q 'application/ld+json' dist/index.html
           test -f dist/privacy/index.html && test -f dist/legal/index.html
           test -f dist/robots.txt && test -f dist/sitemap.xml

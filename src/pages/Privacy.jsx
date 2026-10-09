@@ -10,7 +10,7 @@ export default function Privacy() {
         description="How CompTeq Digital handles personal data on compteqdigital.com: what we collect, why, and your rights."
         path="/privacy/"
       />
-      <DocPage title="Privacy Policy" updated={SITE.updated}>
+      <DocPage title="Privacy Policy" updated="October 9, 2026">
         <p>
           This policy explains what personal data CompTeq Digital collects through compteqdigital.com, why, and
           what rights you have.
@@ -26,8 +26,9 @@ export default function Privacy() {
         <h3>Contact form and email</h3>
         <p>
           If you write to us, we receive your name, email address and the message you choose to send. The contact
-          form opens your email application with a pre-filled message; nothing is stored by this website itself.
-          If the site is later connected to a form service, this policy will be updated to name it.
+          form sends those details over HTTPS to Web3Forms (web3forms.com), which delivers them to us by email.
+          Web3Forms processes the submission in order to deliver that message. You can also email us directly.
+          We do not add you to a mailing list.
         </p>
         <h3>Server logs</h3>
         <p>

@@ -17,6 +17,6 @@ export const SITE = {
 
 export const STATIC_PAGES = [
   { path: '/', lastmod: '2026-10-08', changefreq: 'monthly', priority: '1.0' },
-  { path: '/privacy/', lastmod: '2026-10-08', changefreq: 'yearly', priority: '0.3' },
+  { path: '/privacy/', lastmod: '2026-10-09', changefreq: 'yearly', priority: '0.3' },
   { path: '/legal/', lastmod: '2026-10-08', changefreq: 'yearly', priority: '0.3' },
 ]
