@@ -14,6 +14,7 @@ const font = (name, file) =>
   pathToFileURL(path.join(ROOT, 'node_modules', '@fontsource-variable', name, 'files', file)).href
 const esc = (value) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
+const logo = pathToFileURL(path.join(ROOT, 'public', 'logo.svg')).href
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'og-'))
 
 for (const { meta } of loadPosts()) {
@@ -24,13 +25,13 @@ for (const { meta } of loadPosts()) {
 *{box-sizing:border-box;margin:0}
 body{width:1200px;height:630px;background:#fbf9f4;font-family:I;color:#0e1b2e;display:flex;overflow:hidden}
 .t{width:600px;padding:64px 36px 56px 64px;display:flex;flex-direction:column;border-left:10px solid #b8893b}
-.b{font:500 34px F;letter-spacing:-.01em}.b span{font:600 14px I;letter-spacing:.22em;text-transform:uppercase;color:#7a561a;margin-left:12px}
+.b img{height:72px;display:block;margin:-10px 0 0 -4px}
 .c{margin-top:auto;font:600 17px I;letter-spacing:.2em;text-transform:uppercase;color:#7a561a}
 h1{font:300 52px/1.08 F;letter-spacing:-.02em;margin-top:18px}
 .u{margin-top:34px;font-size:20px;color:#55607a}
 .i{flex:1;background:#f4efe4;border-left:1px solid #d8d0bd;display:flex;align-items:center;overflow:hidden}
 .i img{width:122%;max-width:none;height:auto;margin-left:-11%}
-</style><div class="t"><div class="b">CompTeq<span>Digital</span></div><div class="c">${esc(meta.category)}</div><h1>${esc(meta.title)}</h1><div class="u">compteqdigital.com/blog</div></div><div class="i"><img src="${cover}" alt=""></div>`
+</style><div class="t"><div class="b"><img src="${logo}" alt=""></div><div class="c">${esc(meta.category)}</div><h1>${esc(meta.title)}</h1><div class="u">compteqdigital.com/blog</div></div><div class="i"><img src="${cover}" alt=""></div>`
   const file = path.join(tmp, `${meta.slug}.html`)
   fs.writeFileSync(file, html)
   const out = path.join(ROOT, 'public', meta.image.replace(/\.[a-z]+$/i, '.png'))

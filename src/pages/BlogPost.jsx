@@ -32,7 +32,7 @@ export default function BlogPost({ post, content }) {
           '@type': 'Organization',
           name: SITE.name,
           url: `${SITE.url}/`,
-          logo: { '@type': 'ImageObject', url: `${SITE.url}/logo-512.png` },
+          logo: { '@type': 'ImageObject', url: `${SITE.url}/logo-512.png`, width: 512, height: 512 },
         },
         mainEntityOfPage: { '@type': 'WebPage', '@id': url },
       },

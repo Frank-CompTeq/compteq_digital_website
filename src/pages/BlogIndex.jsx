@@ -37,7 +37,12 @@ export default function BlogIndex({ category: categorySlug, page = 1 }) {
         url: `${SITE.url}/blog/`,
         description: 'Practical articles on custom SaaS development, process automation, analytics and digital products.',
         inLanguage: 'en',
-        publisher: { '@type': 'Organization', name: SITE.name, url: `${SITE.url}/` },
+        publisher: {
+          '@type': 'Organization',
+          name: SITE.name,
+          url: `${SITE.url}/`,
+          logo: { '@type': 'ImageObject', url: `${SITE.url}/logo-512.png`, width: 512, height: 512 },
+        },
         blogPost: allPosts.map((post) => ({
           '@type': 'BlogPosting',
           headline: post.title,
