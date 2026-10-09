@@ -231,7 +231,7 @@
   .contact__list dt { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-ink-3); padding-top: 3px; font-weight: 600; }
   .contact__list a { text-decoration: none; border-bottom: 1px solid var(--color-brass); }
 
-  .form-card { background: #fff; border: 1px solid var(--color-rule); padding: 44px; box-shadow: 0 30px 60px -40px rgba(14, 27, 46, 0.35); }
+  .form-card { position: relative; background: #fff; border: 1px solid var(--color-rule); padding: 44px; box-shadow: 0 30px 60px -40px rgba(14, 27, 46, 0.35); }
   .form-card__title { font-family: var(--font-serif); font-size: 26px; margin-bottom: 28px; }
   .field { margin-bottom: 24px; }
   .field label { display: block; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-ink-2); font-weight: 600; margin-bottom: 8px; }
@@ -240,11 +240,16 @@
     border: 0; border-bottom: 1px solid var(--color-ink-3); padding: 8px 0 10px; border-radius: 0;
   }
   .field input::placeholder, .field textarea::placeholder { color: #6b7488; }
-  .field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--color-brass); box-shadow: 0 1px 0 var(--color-brass); }
+  .field input:focus, .field textarea:focus { border-bottom-color: var(--color-brass); box-shadow: 0 1px 0 var(--color-brass); }
+  .field input:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--color-brass); outline-offset: 3px; }
+  .field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-bottom-color: #9b2c2c; }
   .field textarea { min-height: 110px; resize: vertical; display: block; }
+  .field-error { margin-top: 6px; font-size: 13.5px; line-height: 1.4; color: #9b2c2c; }
   .field--trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
   .form-two { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
   .form-status { margin-top: 16px; font-size: 14.5px; min-height: 1.5em; color: var(--color-sage); }
+  .form-status:focus { outline: 2px solid var(--color-brass); outline-offset: 3px; }
+  .form-status--sending { color: var(--color-ink-2); }
   .form-status--error { color: #9b2c2c; }
   .form-note { font-size: 13.5px; color: var(--color-ink-3); margin-top: 8px; }
   .form-note a { text-decoration: underline; text-underline-offset: 3px; }

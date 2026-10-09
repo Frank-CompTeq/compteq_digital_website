@@ -49,8 +49,8 @@ ErrorDocument 404 /404/index.html
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), interest-cohort=()"
   Header always set Cross-Origin-Opener-Policy "same-origin"
-  # connect-src: add the form endpoint origin here if VITE_CONTACT_ENDPOINT is set.
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; frame-ancestors 'none'; upgrade-insecure-requests"
+  # connect-src allows the contact form to POST to Web3Forms. form-action stays on this page.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.web3forms.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
 </IfModule>
 
 # Fallback expiry for servers without mod_headers

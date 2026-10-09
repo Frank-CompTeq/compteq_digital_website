@@ -43,15 +43,19 @@ English blog at `/blog/` with articles written in Markdown. To add an article, s
 
 ## Contact form
 
-The form works without a backend: on submit it opens the visitor's email client with a pre-filled message to `info@compteqdigital.com` (`mailto:`), and shows a confirmation with the address as fallback. A honeypot field filters basic bots.
+The contact form stays on the page and sends JSON with `POST` to `https://api.web3forms.com/submit` (Web3Forms). It does not use `mailto:`. The visitor sees a pending, success, or error message in an `aria-live` region. A honeypot field filters basic bots. Client-side checks cover name, email and message before anything is sent.
 
-To send submissions to a service (Formspree, Zapier webhook, Airtable, own API...) set `VITE_CONTACT_ENDPOINT` at build time, for example in `.env.production`:
+The access key is **not** stored in the repository. Vite inlines it at build time from:
 
 ```
-VITE_CONTACT_ENDPOINT=https://formspree.io/f/xxxxxxxx
+VITE_WEB3FORMS_ACCESS_KEY
 ```
 
-The form then POSTs JSON `{ name, email, message }` to that URL. Also add the endpoint origin to `connect-src` in the `Content-Security-Policy` of `public/.htaccess`, and update `src/pages/Privacy.jsx` to name the provider.
+Copy `.env.example` to `.env.local` for local builds and put the key there. `.env.local` is gitignored.
+
+**Hostinger, before the next deployment:** open the website in hPanel, then the web app environment variables (Websites → Manage → the Node.js / web app → Environment variables). Add `VITE_WEB3FORMS_ACCESS_KEY` with the Web3Forms access key as the value. Do not commit that value. The variable is read when the site is built, so save it and run a new build. If it is missing, the form does not open an email app: it stays on the page and shows an error that asks the visitor to email `info@compteqdigital.com`.
+
+`public/.htaccess` already allows `https://api.web3forms.com` in `connect-src`. The privacy policy names Web3Forms as the service that delivers the message.
 
 ## Deployment (Hostinger / Apache)
 
