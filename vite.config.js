@@ -3,10 +3,11 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { blogPlugin, writeBlogFeeds } from './plugins/blog.js'
+import { externalizeBootScripts, guardSsgJsonPlugin } from './plugins/ssg-client.js'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [blogPlugin(), react(), tailwindcss()],
+  plugins: [blogPlugin(), guardSsgJsonPlugin(), react(), tailwindcss()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -24,6 +25,9 @@ export default defineConfig({
       return html.replace(charset, '').replace('<head>', `<head>${charset}`)
     },
     // sitemap.xml and rss.xml are generated from the pages + content/blog so new articles appear automatically.
-    onFinished: (dir) => writeBlogFeeds(dir),
+    onFinished: (dir) => {
+      writeBlogFeeds(dir)
+      externalizeBootScripts(dir)
+    },
   },
 })

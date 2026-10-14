@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { SITE, WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT } from '@/lib/site'
+import { readJsonResponse } from '@/lib/read-json'
 import { Button } from '@/components/ui/button'
 
 const SUBJECT = 'New project inquiry — CompTeq Digital'
@@ -91,7 +92,7 @@ export function ContactForm() {
           replyto: fields.email,
         }),
       })
-      const result = await response.json().catch(() => null)
+      const result = await readJsonResponse(response)
       if (!response.ok || !result?.success) {
         throw new Error('submit failed')
       }

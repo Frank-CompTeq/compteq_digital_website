@@ -1,4 +1,5 @@
 import { Layout } from '@/components/Layout'
+import { RouteError } from '@/components/RouteError'
 import Home from '@/pages/Home'
 import Privacy from '@/pages/Privacy'
 import Legal from '@/pages/Legal'
@@ -32,6 +33,7 @@ export const routes = [
   {
     path: '/',
     element: <Layout />,
+    errorElement: <RouteError />,
     children: [
       { index: true, element: <Home />, entry: 'src/pages/Home.jsx' },
       { path: 'privacy', element: <Privacy />, entry: 'src/pages/Privacy.jsx' },
